@@ -1,0 +1,13 @@
+{
+	"formatter": {
+		"enabled": true,
+    	"indentStyle": "tab",
+    	"lineWidth": 120,
+		"semi": true,         
+		"quoteStyle": "single" 
+	},
+	"files": {
+	  "include": ["src/**/*"],
+	  "exclude": ["node_modules", "dist"]
+	}
+  }

@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    container_name: postgres_prisma
+    hostname: postgres
+    environment:
+      POSTGRESQL_USER: ${DB_USER}
+      POSTGRESQL_PASSWORD: ${DB_PASSWORD}
+      POSTGRESSQL_DATABASE: ${DB_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:
