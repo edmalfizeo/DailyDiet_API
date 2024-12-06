@@ -1,13 +1,15 @@
 {
 	"formatter": {
-		"enabled": true,
-    	"indentStyle": "tab",
-    	"lineWidth": 120,
-		"semi": true,         
-		"quoteStyle": "single" 
+	  "enabled": true,           
+	  "useEditorconfig": true,   
+	  "indentStyle": "space",    
+	  "indentWidth": 2,          
+	  "lineWidth": 120,          
+	  "bracketSpacing": true,    
+	  "attributePosition": "preserve" 
 	},
 	"files": {
-	  "include": ["src/**/*"],
-	  "exclude": ["node_modules", "dist"]
+	  "include": ["src/**/*"],   
+	  "ignore": ["node_modules", "dist"] 
 	}
   }

@@ -1,30 +1,33 @@
-import { FastifyRequest, FastifyReply } from "fastify";
-import { userCreateHandler } from "../../handlers/user/userCreate.handler";
+import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
+import { userCreateHandler } from "../../handlers/user/userCreate.handler";
+import { DuplicateEmailError } from "../../errors/duplicatedEmail";
+
+const userCreateSchema = z.object({
+    email: z.string().email({ message: "Invalid email" }),
+    password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+});
 
 export async function userCreateController(request: FastifyRequest, reply: FastifyReply) {
-    const userCreateSchema = z.object({
-        email: z.string().email(),
-        password: z.string().min(6),
-    });
-
-    const { email, password } = userCreateSchema.parse(request.body);
-
-    if(!email || !password) {
-        reply.status(400).send({ message: "Email and password are required" });
-        return;
-    }
-
     try {
-        const user = await userCreateHandler(email, password);
+        const { email, password } = userCreateSchema.parse(request.body);
 
-        reply.code(201).send(user);
-    } catch (error) {
-        if ((error as any).code === 'P2002') { 
-            reply.status(409).send({ message: "Email already in use" });
+        await userCreateHandler(email, password);
+
+        reply.code(201).send({ message: "User created successfully" });
+    } catch (error: any) {
+        if (error instanceof z.ZodError) {
+            reply.code(400).send({
+                message: "Validation error",
+                issues: error.errors.map((e) => ({
+                    path: e.path.join("."),
+                    message: e.message,
+                })),
+            });
+        } else if (error instanceof DuplicateEmailError) {
+            reply.code(error.statusCode).send({ message: error.message });
         } else {
-            reply.status(500).send({ message: "Failed to create user" });
+            reply.code(500).send({ message: "Failed to create user" });
         }
     }
-
 }

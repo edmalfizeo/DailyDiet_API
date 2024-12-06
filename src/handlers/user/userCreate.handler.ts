@@ -1,5 +1,6 @@
 import { prisma } from '../../utils/prisma';
 import bcrypt from 'bcrypt';
+import { DuplicateEmailError } from '../../errors/duplicatedEmail';
 
 export async function userCreateHandler(email: string, password: string) {
     const existingUser = await prisma.user.findUnique({
@@ -7,9 +8,9 @@ export async function userCreateHandler(email: string, password: string) {
     });
 
     if (existingUser) {
-        throw new Error("Email already exists");
+        throw new DuplicateEmailError();
     }
-    
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({

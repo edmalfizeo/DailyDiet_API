@@ -7,7 +7,8 @@
     "dev": "tsx watch src/app.ts",
     "migrate": "prisma migrate dev",
     "studio": "prisma studio",
-    "db:reset": "prisma migrate reset --force"
+    "db:reset": "prisma migrate reset --force",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,7 @@
     "@biomejs/biome": "1.9.4",
     "@types/bcrypt": "^5.0.2",
     "@types/node": "^22.10.1",
+    "supertest": "^7.0.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"

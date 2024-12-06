@@ -34,8 +34,3 @@ prisma/*.db
 # System Files
 .DS_Store
 Thumbs.db
-
-# Tests
-coverage/
-*.test.ts
-*.spec.ts
