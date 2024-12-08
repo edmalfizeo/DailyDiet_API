@@ -1,14 +1,17 @@
-import { fastify } from "fastify";
-import { registerRoutes } from "./routes/index";
+import Fastify, { FastifyInstance } from "fastify";
+import { registerRoutes } from "./routes";
+import { prisma } from "./utils/prisma";
 
-export const app = fastify();
+export function buildApp(): FastifyInstance {
+  const app = Fastify();
 
-registerRoutes(app);
+  // Adicione middlewares aqui (se necessário)
+  app.register(registerRoutes);
 
-app.listen({ port: 3000, host: '127.0.0.1' }, (err, address) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`Server listening at ${address}`);
-});
+  // Garante que o Prisma seja conectado/desconectado corretamente
+  app.addHook("onClose", async () => {
+    await prisma.$disconnect();
+  });
+
+  return app;
+}

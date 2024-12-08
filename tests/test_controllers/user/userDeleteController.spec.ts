@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { userDeleteController } from "../../src/controllers/user/userDelete.controller";
-import { userDeleteHandler } from "../../src/handlers/user/userDelete.handler";
+import { userDeleteController } from "../../../src/controllers/user/userDelete.controller";
+import { userDeleteHandler } from "../../../src/handlers/user/userDelete.handler";
 
-vi.mock("../../src/handlers/user/userDelete.handler", () => ({
+vi.mock("../../../src/handlers/user/userDelete.handler", () => ({
     userDeleteHandler: vi.fn(),
 }));
 

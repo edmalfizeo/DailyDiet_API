@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { userCreateHandler } from '../../src/handlers/user/userCreate.handler'
-import { prisma } from '../../src/utils/prisma';
+import { userCreateHandler } from '../../../src/handlers/user/userCreate.handler'
+import { prisma } from '../../../src/utils/prisma';
 
-vi.mock('../../src/utils/prisma', () => ({
+vi.mock('../../../src/utils/prisma', () => ({
     prisma: {
         user: {
             findUnique: vi.fn(),

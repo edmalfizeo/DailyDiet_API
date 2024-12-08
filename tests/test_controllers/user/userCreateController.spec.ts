@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { userCreateController } from "../../src/controllers/user/userCreate.controller";
-import { userCreateHandler } from "../../src/handlers/user/userCreate.handler";
+import { userCreateController } from "../../../src/controllers/user/userCreate.controller";
+import { userCreateHandler } from "../../../src/handlers/user/userCreate.handler";
 
-vi.mock("../../src/handlers/user/userCreate.handler", () => ({
+vi.mock("../../../src/handlers/user/userCreate.handler", () => ({
     userCreateHandler: vi.fn(),
 }));
 

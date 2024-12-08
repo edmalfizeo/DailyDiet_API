@@ -1,9 +1,9 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { userLoginController } from "../../src/controllers/user/userLogin.controller";
-import { userLoginHandler } from "../../src/handlers/user/userLogin.handler";
-import { InvalidCredentialsError } from "../../src/errors/invalidCredentials";
+import { userLoginController } from "../../../src/controllers/user/userLogin.controller";
+import { userLoginHandler } from "../../../src/handlers/user/userLogin.handler";
+import { InvalidCredentialsError } from "../../../src/errors/invalidCredentials";
 
-vi.mock("../../src/handlers/user/userLogin.handler", () => ({
+vi.mock("../../../src/handlers/user/userLogin.handler", () => ({
     userLoginHandler: vi.fn(),
 }));
 

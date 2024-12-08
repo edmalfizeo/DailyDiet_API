@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import bcrypt from "bcrypt";
-import { prisma } from "../../src/utils/prisma";
-import { userLoginHandler } from "../../src/handlers/user/userLogin.handler";
-import { InvalidCredentialsError } from "../../src/errors/invalidCredentials";
+import { prisma } from "../../../src/utils/prisma";
+import { userLoginHandler } from "../../../src/handlers/user/userLogin.handler";
+import { InvalidCredentialsError } from "../../../src/errors/invalidCredentials";
 
-vi.mock("../../src/utils/prisma", () => ({
+vi.mock("../../../src/utils/prisma", () => ({
     prisma: {
         user: {
             findUnique: vi.fn(),

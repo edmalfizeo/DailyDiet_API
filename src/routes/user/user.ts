@@ -5,7 +5,7 @@ import { userLoginController } from "../../controllers/user/userLogin.controller
 import { userDeleteController } from "../../controllers/user/userDelete.controller";
 
 export async function userRoutes(app: FastifyInstance) {
-    app.post("/user/register", userCreateController);
-    app.post("/user/login", userLoginController);
-    app.delete("/user/delete", { preHandler: authMiddleware }, userDeleteController);
+    app.post("/register", userCreateController);
+    app.post("/login", userLoginController);
+    app.delete("/delete", { preHandler: authMiddleware }, userDeleteController);
 }

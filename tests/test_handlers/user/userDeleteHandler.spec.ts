@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { userDeleteHandler } from "../../src/handlers/user/userDelete.handler";
-import { prisma } from "../../src/utils/prisma";
+import { userDeleteHandler } from "../../../src/handlers/user/userDelete.handler";
+import { prisma } from "../../../src/utils/prisma";
 
-vi.mock("../../src/utils/prisma", () => ({
+vi.mock("../../../src/utils/prisma", () => ({
     prisma: {
         user: {
             delete: vi.fn(),
