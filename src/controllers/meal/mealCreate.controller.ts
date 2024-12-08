@@ -16,7 +16,7 @@ export async function mealCreateController(request: FastifyRequest, reply: Fasti
 
         const meal = await createMealHandler({ userId, name, calories });
 
-        return reply.code(201).send(meal);
+        return reply.code(201).send({ message: "Meal created successfully", meal });
     } catch (error) {
         if (error instanceof z.ZodError) {
             return reply.code(400).send({

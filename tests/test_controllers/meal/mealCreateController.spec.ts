@@ -43,10 +43,13 @@ describe("mealCreateController", () => {
         });
         expect(mockReply.code).toHaveBeenCalledWith(201);
         expect(mockReply.send).toHaveBeenCalledWith({
-            id: "meal-id",
-            name: "Lunch",
-            calories: 500,
-            userId: "user-id",
+            message: "Meal created successfully",
+            meal: {
+                id: "meal-id",
+                name: "Lunch",
+                calories: 500,
+                userId: "user-id",
+            }
         });
     });
 
