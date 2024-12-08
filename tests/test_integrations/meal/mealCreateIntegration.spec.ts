@@ -4,7 +4,6 @@ import request from "supertest";
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { date } from "zod";
 
 let app: ReturnType<typeof buildApp>;
 
