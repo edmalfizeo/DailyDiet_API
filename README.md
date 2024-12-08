@@ -35,7 +35,49 @@ The project follows the **MVC (Model-View-Controller)** architecture and uses **
 ### Directory Layout
 
 ```graphql
-src/ ├── controllers/ # Handles incoming HTTP requests and responses │ ├── meal/ # Meal-specific controllers │ ├── user/ # User-specific controllers ├── handlers/ # Core business logic and interaction with the database │ ├── meal/ # Meal-specific handlers │ ├── user/ # User-specific handlers ├── middlewares/ # Authentication and request processing middleware ├── routes/ # Defines API routes for meals and users ├── utils/ # Utility functions and database connection management ├── errors/ # Custom error classes for improved error handling
+src/
+├── controllers/               # HTTP request handling logic
+│   ├── meal/
+│   │   ├── mealCreate.controller.ts     # Handles meal creation requests
+│   │   ├── mealDelete.controller.ts     # Handles meal deletion requests
+│   │   ├── mealList.controller.ts       # Handles meal listing requests
+│   │   └── mealUpdate.controller.ts     # Handles meal update requests
+│   └── user/
+│       ├── userCreate.controller.ts     # Handles user registration
+│       ├── userDelete.controller.ts     # Handles user deletion
+│       └── userLogin.controller.ts      # Handles user authentication
+├── errors/                    # Custom error definitions
+│   ├── baseError.ts                   # Base class for custom errors
+│   ├── duplicatedEmail.ts             # Error for duplicate email registrations
+│   └── invalidCredentials.ts          # Error for invalid login credentials
+├── handlers/                  # Business logic
+│   ├── meal/
+│   │   ├── mealCreate.handler.ts       # Logic for meal creation
+│   │   ├── mealDelete.handler.ts       # Logic for meal deletion
+│   │   ├── mealList.handler.ts         # Logic for meal listing
+│   │   └── mealUpdate.handler.ts       # Logic for meal updates
+│   └── user/
+│       ├── userCreate.handler.ts       # Logic for user registration
+│       ├── userDelete.handler.ts       # Logic for user deletion
+│       └── userLogin.handler.ts        # Logic for user authentication
+├── middlewares/              # Custom middlewares
+│   └── auth.middleware.ts            # JWT-based authentication middleware
+├── routes/                   # Route definitions
+│   ├── meal/
+│   │   └── index.ts                  # Meal-related routes
+│   └── user/
+│       └── index.ts                  # User-related routes
+├── utils/                    # Utility and configuration files
+│   ├── app.ts                       # Fastify application setup
+│   └── server.ts                    # Server startup configuration
+└── tests/                   # Automated tests
+    ├── test_controllers/           # Controller unit tests
+    ├── test_handlers/              # Handler unit tests
+    └── test_integrations/          # Integration tests
+        ├── mealCreateIntegration.spec.ts
+        ├── mealDeleteIntegration.spec.ts
+        ├── mealListIntegration.spec.ts
+        └── mealUpdateIntegration.spec.ts
 ```
 
 ---
